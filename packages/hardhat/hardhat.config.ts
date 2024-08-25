@@ -23,6 +23,7 @@ const config: HardhatUserConfig = {
   solidity: {
     version: "0.8.17",
     settings: {
+      evmVersion: "london",
       optimizer: {
         enabled: true,
         // https://docs.soliditylang.org/en/latest/using-the-compiler.html#optimizer-options
@@ -40,6 +41,16 @@ const config: HardhatUserConfig = {
   networks: {
     // View the networks that are pre-configured.
     // If the network you are looking for is not here you can add new network settings
+    modeTestnet: {
+      url: "https://sepolia.mode.network",
+      chainId: 919,
+      accounts: [deployerPrivateKey],
+    },
+    mode: {
+      url: "https://mainnet.mode.network",
+      chainId: 34443,
+      accounts: [deployerPrivateKey],
+    },
     hardhat: {
       forking: {
         url: `https://eth-mainnet.alchemyapi.io/v2/${providerApiKey}`,
