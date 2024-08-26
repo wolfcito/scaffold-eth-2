@@ -1,5 +1,18 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-. "$(dirname "$0")/security/detect-private-key.sh"
 
+# Variable to control private key detection
+ENABLE_PRIVATE_KEY_DETECTION=true
+
+# Run private key detection if enabled
+if [ "$ENABLE_PRIVATE_KEY_DETECTION" = "true" ]; then
+  # Source the custom script for private key detection
+  . "$(dirname "$0")/security/detect-private-key.sh"
+  echo "Debug: Running private key detection..."
+fi
+
+# Source the Husky script
+. "$(dirname "$0")/_/husky.sh"
+echo "Debug: Sourced husky.sh"
+
+# Run lint-staged with verbose output
 yarn lint-staged --verbose
