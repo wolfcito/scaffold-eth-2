@@ -7,7 +7,7 @@ To get started, follow the steps below:
 ### Option 1
 
 ```shell
-npx scaffold-mode-network <dapp-name>
+npx scaffold-mode-network dapp-name
 ```
 
 ### Option 2
