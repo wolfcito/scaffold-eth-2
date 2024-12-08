@@ -19,8 +19,6 @@ contract YourContract {
 	bool public premium = false;
 	uint256 public totalCounter = 0;
 	mapping(address => uint) public userGreetingCounter;
-	address constant SFS_CONTRACT = 0xBBd707815a7F7eb6897C7686274AFabd7B579Ff6; //testnet
-	// address constant SFS_CONTRACT = 0x8680CEaBcb9b56913c519c069Add6Bc3494B7020; //mainnet
 
 	// Events: a way to emit log statements from smart contract that can be listened to by external parties
 	event GreetingChange(
@@ -34,8 +32,6 @@ contract YourContract {
 	// Check packages/hardhat/deploy/00_deploy_your_contract.ts
 	constructor(address _owner) {
 		owner = _owner;
-		ISFS sfsContract = ISFS(SFS_CONTRACT); // This address is the address of the SFS contract
-		sfsContract.register(msg.sender); //Registers this contract and assigns the NFT to the owner of this contract
 	}
 
 	// Modifier: used to define a set of rules that must be met before or after a function is executed
@@ -88,8 +84,4 @@ contract YourContract {
 	 * Function that allows the contract to receive ETH
 	 */
 	receive() external payable {}
-}
-
-interface ISFS {
-	function register(address _recipient) external returns (uint256 tokenId);
 }
